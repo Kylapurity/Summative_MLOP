@@ -825,7 +825,7 @@ async def retrain_from_db(request: RetrainFromDBRequest):
         if os.path.exists(temp_model_path):
             os.remove(temp_model_path)
 # Server Startup
-if _name_ == "_main_":
+if __name__ == "__main__":
     import uvicorn
     port = int(os.environ.get("PORT", 8000))
     uvicorn.run(
