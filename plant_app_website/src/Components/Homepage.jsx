@@ -10,7 +10,7 @@ import Tomate from '../assets/Tomate.jpg';
 import PotatoBlight from '../assets/potato-diseases.jpg';
 import ComputerVision from '../assets/maize.jpg';
 import SustainablePractices from '../assets/Robust.jpg';
-import Grow from '../assets/Grow.jpg';
+import Grow from '../assets/grow.jpg';
 import Fresh from '../assets/fresht.jpg';
 import Miller from '../assets/miller.jpg';
 import Apples from '../assets/apple.jpg';
