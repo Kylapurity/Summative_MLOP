@@ -4,6 +4,7 @@ import zipfile
 import io
 import json
 import base64
+import uvicorn
 from datetime import datetime
 from typing import List
 import numpy as np
@@ -826,7 +827,6 @@ async def retrain_from_db(request: RetrainFromDBRequest):
             os.remove(temp_model_path)
 # Server Startup
 if __name__ == "__main__":
-    import uvicorn
     port = int(os.environ.get("PORT", 8000))
     uvicorn.run(
         "main:app",
