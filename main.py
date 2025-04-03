@@ -44,7 +44,7 @@ tf.get_logger().setLevel('ERROR')
 UPLOAD_FOLDER = "uploaded_data"
 VISUALIZATION_DIR = "visualizations"
 MODEL_DIR = "models"
-KERAS_PATH = os.path.join(MODEL_DIR, "model.keras")
+KERAS_PATH = os.path.join(MODEL_DIR, "plant_disease_model.keras")
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'zip', 'JPG'}
 MAX_IMAGES_PER_BATCH = 20
 MIN_IMAGES_PER_CLASS = 1
