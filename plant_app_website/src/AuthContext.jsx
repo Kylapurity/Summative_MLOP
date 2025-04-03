@@ -24,7 +24,7 @@ export const AuthProvider = ({ children }) => {
   const signup = async (name, email, password) => {
     try {
       // Replace with actual backend API call to /signup
-      const response = await fetch('http://127.0.0.1:8000/signup', {
+      const response = await fetch('https://summativemlop-production.up.railway.app/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

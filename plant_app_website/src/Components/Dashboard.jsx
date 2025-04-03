@@ -269,7 +269,7 @@ const Dashboard = () => {
   const trainingFileInputRef = useRef(null);
 
   // Backend API URL
-  const API_URL = "http://127.0.0.1:8000"; // Update to your backend URL if deployed
+  const API_URL = "https://summativemlop-production.up.railway.app"; // Update to your backend URL if deployed
 
   // Load history from localStorage
   useEffect(() => {

@@ -596,7 +596,7 @@ async def retrain(request: RetrainRequest):
         training_accuracy = float(history.history['accuracy'][-1]) if 'accuracy' in history.history else None
         validation_accuracy = float(history.history['val_accuracy'][-1]) if use_validation and 'val_accuracy' in history.history else None
         
-        base_url = "http://127.0.0.1:8000"
+        base_url = "https://summativemlop-production.up.railway.app"
         response_content = {
             "status": "success",
             "metrics": {
