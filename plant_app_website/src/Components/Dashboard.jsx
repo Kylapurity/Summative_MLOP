@@ -266,7 +266,7 @@ const Dashboard = () => {
   const fileInputRef = useRef(null);
   const trainingFileInputRef = useRef(null);
 
-  const API_URL = "https://summative-mlop-f4v0.onrender.com"; // Use local backend URL
+  const API_URL = "https://summativemlop-production.up.railway.app"; // Use local backend URL
 
   // Load history from localStorage after component mounts
   useEffect(() => {
