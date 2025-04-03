@@ -2,6 +2,8 @@
 
 ## Project Overview
 Smart Farm is a web-based application that helps farmers diagnose plant diseases accurately and provides treatment recommendations. By leveraging machine learning, our mission is to reduce crop losses, minimize pesticide use, and promote sustainable farming practices through accurate and timely plant disease diagnosis.
+#### Web app Link
+*Public URl from Samrt : https://smartfarm-livid.vercel.app/.
 
 ## Features
 - **Disease Prediction**: Users can upload images of plants, and the model predicts the disease and suggests treatments.
