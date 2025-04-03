@@ -266,7 +266,7 @@ const Dashboard = () => {
   const fileInputRef = useRef(null);
   const trainingFileInputRef = useRef(null);
 
-  const API_URL = "https://summativemlop-production.up.railway.app"; // Use local backend URL
+  const API_URL = "http://127.0.0.1:8000";
 
   // Load history from localStorage after component mounts
   useEffect(() => {
@@ -465,7 +465,7 @@ const Dashboard = () => {
         },
         body: JSON.stringify({
           learning_rate: 0.0001,
-          epochs: 10,
+          epochs: 5,
         }), // No retraining_batch, uses all data
       });
 

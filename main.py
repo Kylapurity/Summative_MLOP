@@ -4,7 +4,6 @@ import zipfile
 import io
 import json
 import base64
-import uvicorn
 from datetime import datetime
 from typing import List
 import numpy as np
@@ -37,7 +36,7 @@ tf.get_logger().setLevel('ERROR')
 UPLOAD_FOLDER = "uploaded_data"
 VISUALIZATION_DIR = "visualizations"
 MODEL_DIR = "models"
-KERAS_PATH = os.path.join(MODEL_DIR, "plant_disease_model.keras")
+KERAS_PATH = os.path.join(MODEL_DIR, "model.keras")
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'zip'}
 MAX_IMAGES_PER_BATCH = 20
 
@@ -79,7 +78,7 @@ app = FastAPI(
 # Enable CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=["*"] , 
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -222,7 +221,7 @@ def save_visualizations(y_true, y_pred_classes, target_names, history=None):
 class RetrainFromDBRequest(BaseModel):
     retraining_batch: str
     learning_rate: float = 0.0001
-    epochs: int = 5
+    epochs: int = 10
 
 # API Endpoints
 @app.get("/", tags=["Root"])
@@ -268,7 +267,7 @@ async def predict(file: UploadFile = File(...)):
 @app.post("/retrain", tags=["Training"])
 async def retrain(files: List[UploadFile] = File(...),
                   learning_rate: float = 0.0001,
-                  epochs: int = 5):
+                  epochs: int = 10):
     global model, CLASS_NAMES
     
     new_data_dir = os.path.join(UPLOAD_FOLDER, "new_data")
@@ -527,7 +526,7 @@ async def retrain(files: List[UploadFile] = File(...),
         training_accuracy = float(history.history['accuracy'][-1]) if 'accuracy' in history.history else None
         validation_accuracy = float(history.history['val_accuracy'][-1]) if use_validation and 'val_accuracy' in history.history else None
         
-        base_url = "https://summativemlop-production.up.railway.app"
+        base_url = "http://127.0.0.1:8000"
         response_content = {
             "status": "success",
             "metrics": {
@@ -570,7 +569,7 @@ from pydantic import BaseModel
 class RetrainFromDBRequest(BaseModel):
     retraining_batch: Optional[str] = None  # Optional field
     learning_rate: float = 0.0001
-    epochs: int = 5
+    epochs: int = 10
 
 @app.post("/retrain_from_db", tags=["Training"])
 async def retrain_from_db(request: RetrainFromDBRequest):
@@ -794,7 +793,7 @@ async def retrain_from_db(request: RetrainFromDBRequest):
         training_accuracy = float(history.history['accuracy'][-1]) if 'accuracy' in history.history else None
         validation_accuracy = float(history.history['val_accuracy'][-1]) if use_validation and 'val_accuracy' in history.history else None
         
-        base_url = "https://summativemlop-production.up.railway.app"
+        base_url = "http://127.0.0.1:8000"
         response_content = {
             "status": "success",
             "metrics": {
@@ -827,6 +826,7 @@ async def retrain_from_db(request: RetrainFromDBRequest):
             os.remove(temp_model_path)
 # Server Startup
 if __name__ == "__main__":
+    import uvicorn
     port = int(os.environ.get("PORT", 8000))
     uvicorn.run(
         "main:app",
